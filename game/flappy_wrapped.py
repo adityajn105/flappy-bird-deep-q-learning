@@ -54,14 +54,14 @@ class GameState:
         self.playerMaxVelY =  10   # max vel along Y, max descend speed
         self.playerMinVelY =  -8   # min vel along Y, max ascend speed
         self.playerAccY    =   1   # players downward accleration
-        self.playerFlapAcc =  -9   # players speed on flapping
+        self.playerFlapAcc =  -2   # players speed on flapping
         self.playerFlapped = False # True when player flaps
 
     def frame_step(self, input_action):
         input_actions = [0,1] if input_action == 1 else [1,0]
         pygame.event.pump()
 
-        reward = 0.1
+        reward = 0
         terminal = False
 
         if sum(input_actions) != 1:
@@ -71,8 +71,12 @@ class GameState:
         # input_actions[1] == 1: flap the bird
         if input_actions[1] == 1:
             if self.playery > -2 * PLAYER_HEIGHT:
-                self.playerVelY = self.playerFlapAcc
-                self.playerFlapped = True
+                if self.playerVelY == self.playerMinVelY+1:
+                    self.playerVelY = self.playerMinVelY
+                    self.playerFlapped = True
+                elif self.playerVelY > self.playerMinVelY+1:
+                    self.playerVelY = self.playerVelY + self.playerFlapAcc
+                    self.playerFlapped = True
                 #SOUNDS['wing'].play()
 
         # check for score
