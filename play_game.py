@@ -93,6 +93,7 @@ if __name__=='__main__':
     net = DDQN( (STATE_DIM,84,84), 2 ).to(device)
     net.load_state_dict(torch.load('checkpoints/flappy_best_model.dat'))
     
+    input("Please Press Enter to Start")
     state = initial_autoplay(env)
     total_rewards = 0
     while True:
