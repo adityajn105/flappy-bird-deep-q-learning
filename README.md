@@ -6,7 +6,7 @@ Flappy Bird Game trained on a Double Dueling Deep Q Network with Prioritized Exp
 [See Full 3 minutes video](https://youtu.be/a5vtakBxh6Y)
 
 ## Getting Started
-Here I will explain how to run the game which runs automatically using saved model, also I will gbreif you about basics of Q Learning, Dueling architecture and Prioritized Experience Replay.
+Here I will explain how to run the game which runs automatically using saved model, also I will breif you about basics of Q Learning, Deep Q learning, Dueling architecture and Prioritized Experience Replay.
 
 ### Prerequisites
 You will need Python 3.X.X with some packages which you can install direclty using requirements.txt.
@@ -34,7 +34,7 @@ So we can decompose Q(s,a) as the sum of:
 **A(s)** - the advantage of taking that action at that state (how much better is to take this action versus all other possible actions at that state).
 
 ```
-** Q(s,a) = V(s) + A(s,a) **
+Q(s,a) = V(s) + A(s,a)
 ```
 
 ![Dueling Architecure](https://cdn-images-1.medium.com/max/1200/1*FkHqwA2eSGixdS-3dvVoMA.png)
@@ -43,7 +43,7 @@ So we can decompose Q(s,a) as the sum of:
 The idea behind PER was that some experiences may be more important than others for our training, but might occur less frequently. Because we sample the batch uniformly (selecting the experiences randomly) these rich experiences that occur rarely have practically no chance to be selected. We want to take in priority experience where there is a big difference between our prediction and the TD target, since it means that we have a lot to learn about it.
 
 ```
-** pt = |dt| + e **
+pt = |dt| + e
 where,
 	pt = priority of the experience
 	dt = magnitude of TD error
@@ -54,7 +54,7 @@ where,
 [Take a look at this article which explains Double Dueling and PER](https://medium.freecodecamp.org/improvements-in-deep-q-learning-dueling-double-dqn-prioritized-experience-replay-and-fixed-58b130cc5682)
 
 ## Authors
-* Aditya Jain : [Portfolio](https://adityajn105@github.io)
+* Aditya Jain : [Portfolio](https://adityajn105.github.io)
 
 ## Licence
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/adityajn105/flappy-bird-deep-q-learning/blob/master/LICENSE) file for details
